@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #sidnav {
+            width: 250px;
+            height: 100%;
+            background-color: black;
+            font-size: 20px;
+            position: fixed;
+            left: 0%;
+            top: 0%;
+        }
+        
+        a {
+            color: white;
+            margin: 20px;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            color: red;
+        }
+        
+        #main {
+            padding-left: 260px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="sidnav">
+        
+
+        <h2><a href="/">Home</a></h2>
+
+        {% if user.is_authenticated%}
+
+        <h2><a href="{%url 'account:editprofile' %}">EditProfile</a></h2>
+       
+        <h2><a href="{%url 'income:addincome' %}">AddIncome</a></h2>
+        <h2><a href="{%url 'expense:addexpense' %}">AddExpense</a></h2>
+        <h2><a href="{%url 'income:inclist' %}">IncomeList</a></h2>
+        <h2><a href="{%url 'expense:explist' %}">ExpenseList</a></h2>
+        <h2><a href="{%url 'account:logout' %}">LogOut</a></h2>
+        {%else%}
+        <h2><a href="{%url 'account:adduser' %}">Register</a></h2>
+        <h2><a href="{%url 'account:login' %}">Login</a></h2>
+        {%endif%}
+
+
+
+
+
+
+        <h2><a href="">Aboutus</a></h2>
+    </div>
+
+    <div id="main">
+        <h1> Daily Income Expense Management Application</h1>
+        {%block body%} {%endblock%}
+    </div>
+</body>
+
+</html>

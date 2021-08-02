@@ -1,0 +1,7 @@
+{%extends 'base.html'%} {%block body%}
+
+{% if user.is_authenticated %}
+<h2> Welcome : <span style="color: darkgreen;">{{user.username}} </span></h2>
+<h2> Total Balance : <span style="color: red;">  {{bal}}</span></h2>
+{%endif%}
+{%endblock%}

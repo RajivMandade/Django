@@ -1,0 +1,55 @@
+{%extends 'base.html'%} {%block body%}
+<table cellspacing="10" border="1">
+
+    <tr>
+        <th>Id</th>
+        <th>Income</th>
+        <th>IncomeType</th>
+        <th>IncomeDate</th>
+        <th>Descrption</th>
+        <th>User</th>
+        <th colspan="2">Action</th>
+    </tr>
+    {%for i in incl%}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.income}}</td>
+        <td>{{i.incomeType}}</td>
+        <td>{{i.incomeDate}}</td>
+        <td>{{i.description}}</td>
+        <td>{{i.user}}</td>
+        <td><a href="{%url 'income:dincome' i.id %}">Delete</a></td>
+        <td><a href="{%url 'income:eincomee' i.id %}">Edit</a></td>
+    </tr>
+
+
+    {%endfor%}
+
+</table>
+<style>
+    #rside{
+        width: 200px;
+        height: 100%;
+        background-color: aqua;
+        position:fixed;
+        top:0%;
+        right: 0%;
+    }
+</style>
+<div id="rside">
+    <h3>Filter By Income_amo</h3>
+    {%for i in inc_income%}
+    <h4><a href="{%url 'income:incometype' i %}">{{i}}</a></h4>
+    {%endfor%}
+    <h3>Filter By Type</h3>
+    {%for i in inc_type%}
+    <h4><a href="{%url 'income:type' i %}">{{i}}</a></h4>
+    {%endfor%}
+    <h3>Filter By Date</h3>
+    {%for i in inc_date%}
+    <h4><a href="{%url 'income:datetype' i %}">{{i}}</a></h4>
+    {%endfor%}
+
+
+</div>
+{%endblock%}

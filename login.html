@@ -1,0 +1,27 @@
+{%extends 'base.html'%} {%block body%} {%if lmsg is not None%}
+<h3 style="color: red;">{{lmsg}}</h3>
+{%endif%}
+<form method="POST">
+    {%csrf_token%}
+
+    <table border="1" cellspacing="10">
+
+        <tr>
+            <td>UserName</td>
+            <td><input type="text" name="uname"></td>
+        </tr>
+
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="passw"></td>
+        </tr>
+
+        <tr>
+            <td><input type="submit" value="Login"></td>
+            <td><a href="{%url 'account:adduser' %}" style="color: blue;">Click Here Register</a></td>
+        </tr>
+
+    </table>
+
+</form>
+{%endblock%}

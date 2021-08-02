@@ -1,0 +1,37 @@
+{%extends 'base.html'%} {%block body%}
+
+ <div>
+     <form action="{%url 'expense:search' %}"  method="POST"> 
+        {%csrf_token%}
+         <textarea cols="80" rows="3" name="search"></textarea>
+         <input type="submit" value="SEARCH">
+     </form>
+ </div>
+<table cellspacing="10" border="1">
+
+    <tr>
+        <th>Id</th>
+        <th>Expense</th>
+        <th>ExpenseType</th>
+        <th>ExpenseDate</th>
+        <th>Descrption</th>
+        <th>User</th>
+        <th colspan="2">Action</th>
+    </tr>
+    {%for i in expl%}
+    <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.expense}}</td>
+        <td>{{i.expenseType}}</td>
+        <td>{{i.expenseDate}}</td>
+        <td>{{i.description}}</td>
+        <td>{{i.user}}</td>
+        <td><a href="{% url 'expense:exp' i.id%}">Delete</a></td>
+        <td><a href="{% url 'expense:edit' i.id%}">Edit</a></td>
+    </tr>
+
+
+    {%endfor%}
+
+</table>
+{%endblock%}
